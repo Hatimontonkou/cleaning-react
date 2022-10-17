@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 export const App = () => {
+  const [suit, setSuit] = useState(["ssss", "ddddd"]);
+  const [futon, setFuton] = useState(["aaaa"]);
+  const [etc, setEtc] = useState(["cccc"]);
+  const [finish, setFinish] = useState(["cccc"]);
   return (
     <>
       <div className="input-area">
@@ -13,40 +17,56 @@ export const App = () => {
       <div className="suit-area">
         <p className="title">スーツ類</p>
         <ul>
-          <div className="list-row">
-            <li>aaaaa</li>
-            <button>クリーニング済み</button>
-            <button>キャンセル</button>
-          </div>
+          {suit.map((todo) => {
+            return (
+              <div kiy={todo} className="list-row">
+                <li>{todo}</li>
+                <button>クリーニング済み</button>
+                <button>キャンセル</button>
+              </div>
+            );
+          })}
         </ul>
       </div>
       <div className="futon-area">
         <p className="title">布団類</p>
         <ul>
-          <div className="list-row">
-            <li>bbbbb</li>
-            <button>クリーニング済み</button>
-            <button>キャンセル</button>
-          </div>
+          {futon.map((todo) => {
+            return (
+              <div kiy={todo} className="list-row">
+                <li>{todo}</li>
+                <button>クリーニング済み</button>
+                <button>キャンセル</button>
+              </div>
+            );
+          })}
         </ul>
       </div>
       <div className="else-area">
         <p className="title">その他</p>
         <ul>
-          <div className="list-row">
-            <li>ccccc</li>
-            <button>クリーニング済み</button>
-            <button>キャンセル</button>
-          </div>
+          {etc.map((todo) => {
+            return (
+              <div kiy={todo} className="list-row">
+                <li>{todo}</li>
+                <button>クリーニング済み</button>
+                <button>キャンセル</button>
+              </div>
+            );
+          })}
         </ul>
       </div>
       <div className="finish-area">
         <p>受け取り待ち</p>
         <ul>
-          <div className="list-row">
-            <li>dddddd</li>
-            <button>受け取り完了</button>
-          </div>
+          {finish.map((todo) => {
+            return (
+              <div kiy={todo} className="list-row">
+                <li>{todo}</li>
+                <button>受け取り完了</button>
+              </div>
+            );
+          })}
         </ul>
       </div>
     </>

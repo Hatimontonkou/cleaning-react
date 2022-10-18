@@ -2,15 +2,27 @@ import React, { useState } from "react";
 import "./styles.css";
 
 export const App = () => {
+  const [cleaningThings, setCleaningThings] = useState("");
   const [suit, setSuit] = useState(["ssss", "ddddd"]);
   const [futon, setFuton] = useState(["aaaa"]);
   const [etc, setEtc] = useState(["cccc"]);
   const [finish, setFinish] = useState(["cccc"]);
+  const onChangeThings = (event) => setCleaningThings(event.target.value);
+  const onClickAdd = () => {
+    if (cleaningThings === "") return;
+    const newCleaningThings = [...suit, cleaningThings];
+    setSuit(newCleaningThings);
+    setCleaningThings("");
+  };
   return (
     <>
       <div className="input-area">
-        <input placeholder="氏名" />
-        <button>スーツ類</button>
+        <input
+          placeholder="氏名"
+          value={cleaningThings}
+          onChange={onChangeThings}
+        />
+        <button onClick={onClickAdd}>スーツ類</button>
         <button>布団類</button>
         <button>その他</button>
       </div>

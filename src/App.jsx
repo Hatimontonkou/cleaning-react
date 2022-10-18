@@ -8,10 +8,22 @@ export const App = () => {
   const [etc, setEtc] = useState(["cccc"]);
   const [finish, setFinish] = useState(["cccc"]);
   const onChangeThings = (event) => setCleaningThings(event.target.value);
-  const onClickAdd = () => {
+  const onClickAddSuit = () => {
     if (cleaningThings === "") return;
     const newCleaningThings = [...suit, cleaningThings];
     setSuit(newCleaningThings);
+    setCleaningThings("");
+  };
+  const onClickAddFuton = () => {
+    if (cleaningThings === "") return;
+    const newCleaningThings = [...futon, cleaningThings];
+    setFuton(newCleaningThings);
+    setCleaningThings("");
+  };
+  const onClickAddEtc = () => {
+    if (cleaningThings === "") return;
+    const newCleaningThings = [...etc, cleaningThings];
+    setEtc(newCleaningThings);
     setCleaningThings("");
   };
   return (
@@ -22,9 +34,9 @@ export const App = () => {
           value={cleaningThings}
           onChange={onChangeThings}
         />
-        <button onClick={onClickAdd}>スーツ類</button>
-        <button>布団類</button>
-        <button>その他</button>
+        <button onClick={onClickAddSuit}>スーツ類</button>
+        <button onClick={onClickAddFuton}>布団類</button>
+        <button onClick={onClickAddEtc}>その他</button>
       </div>
       <div className="suit-area">
         <p className="title">スーツ類</p>

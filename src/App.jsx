@@ -3,10 +3,10 @@ import "./styles.css";
 
 export const App = () => {
   const [cleaningThings, setCleaningThings] = useState("");
-  const [suit, setSuit] = useState(["ssss", "ddddd"]);
+  const [suit, setSuit] = useState(["adae", "gsrfsr"]);
   const [futon, setFuton] = useState(["aaaa"]);
   const [etc, setEtc] = useState(["cccc"]);
-  const [finish, setFinish] = useState(["cccc"]);
+  const [finish, setFinish] = useState(["eeee"]);
   const onChangeThings = (event) => setCleaningThings(event.target.value);
   const onClickAddSuit = () => {
     if (cleaningThings === "") return;
@@ -26,6 +26,26 @@ export const App = () => {
     setEtc(newCleaningThings);
     setCleaningThings("");
   };
+  const onClickDeleteSuit = (index) => {
+    const newCleaningThings = [...suit];
+    newCleaningThings.splice(index, 1);
+    setSuit(newCleaningThings);
+  };
+  const onClickDeleteFuton = (index) => {
+    const newCleaningThings = [...futon];
+    newCleaningThings.splice(index, 1);
+    setFuton(newCleaningThings);
+  };
+  const onClickDeleteEtc = (index) => {
+    const newCleaningThings = [...etc];
+    newCleaningThings.splice(index, 1);
+    setEtc(newCleaningThings);
+  };
+  const onClickDeleteFinish = (index) => {
+    const newCleaningThings = [...finish];
+    newCleaningThings.splice(index, 1);
+    setFinish(newCleaningThings);
+  };
   return (
     <>
       <div className="input-area">
@@ -41,12 +61,14 @@ export const App = () => {
       <div className="suit-area">
         <p className="title">スーツ類</p>
         <ul>
-          {suit.map((todo) => {
+          {suit.map((todo, index) => {
             return (
-              <div kiy={todo} className="list-row">
+              <div key={todo} className="list-row">
                 <li>{todo}</li>
                 <button>クリーニング済み</button>
-                <button>キャンセル</button>
+                <button onClick={() => onClickDeleteSuit(index)}>
+                  キャンセル
+                </button>
               </div>
             );
           })}
@@ -55,12 +77,14 @@ export const App = () => {
       <div className="futon-area">
         <p className="title">布団類</p>
         <ul>
-          {futon.map((todo) => {
+          {futon.map((todo, index) => {
             return (
-              <div kiy={todo} className="list-row">
+              <div key={todo} className="list-row">
                 <li>{todo}</li>
                 <button>クリーニング済み</button>
-                <button>キャンセル</button>
+                <button onClick={() => onClickDeleteFuton(index)}>
+                  キャンセル
+                </button>
               </div>
             );
           })}
@@ -69,12 +93,14 @@ export const App = () => {
       <div className="else-area">
         <p className="title">その他</p>
         <ul>
-          {etc.map((todo) => {
+          {etc.map((todo, index) => {
             return (
-              <div kiy={todo} className="list-row">
+              <div key={todo} className="list-row">
                 <li>{todo}</li>
                 <button>クリーニング済み</button>
-                <button>キャンセル</button>
+                <button onClick={() => onClickDeleteEtc(index)}>
+                  キャンセル
+                </button>
               </div>
             );
           })}
@@ -83,11 +109,13 @@ export const App = () => {
       <div className="finish-area">
         <p>受け取り待ち</p>
         <ul>
-          {finish.map((todo) => {
+          {finish.map((todo, index) => {
             return (
-              <div kiy={todo} className="list-row">
+              <div key={todo} className="list-row">
                 <li>{todo}</li>
-                <button>受け取り完了</button>
+                <button onClick={() => onClickDeleteFinish(index)}>
+                  受け取り完了
+                </button>
               </div>
             );
           })}

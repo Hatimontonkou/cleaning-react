@@ -90,17 +90,23 @@ export const App = () => {
         onClickAddSuit={onClickAddSuit}
         onClickAddFuton={onClickAddFuton}
         onClickAddEtc={onClickAddEtc}
+        disabledSuit={suit.length >= 5}
+        disabledFuton={futon.length >= 5}
+        disabledEtc={etc.length >= 5}
       />
+      {suit.length >= 5 && <p style={{ color: "red" }}>　各種類5個まで</p>}
       <Suit
         cleaningSuit={suit}
         deleteSuit={onClickDeleteSuit}
         CompleteSuit={onClickCompleteSuit}
       />
+      {futon.length >= 5 && <p style={{ color: "red" }}>　各種類5個まで</p>}
       <Futon
         cleaningFuton={futon}
         deleteFuton={onClickDeleteFuton}
         CompleteFuton={onClickCompleteFuton}
       />
+      {etc.length >= 5 && <p style={{ color: "red" }}>　各種類5個まで</p>}
       <Etc
         cleaningEtc={etc}
         deleteEtc={onClickDeleteEtc}

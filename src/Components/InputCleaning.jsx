@@ -15,7 +15,10 @@ export const InputCleaning = (props) => {
     onChangeThings,
     onClickAddSuit,
     onClickAddFuton,
-    onClickAddEtc
+    onClickAddEtc,
+    disabledSuit,
+    disabledFuton,
+    disabledEtc
   } = props;
   return (
     <div style={style}>
@@ -24,9 +27,15 @@ export const InputCleaning = (props) => {
         value={cleaningThings}
         onChange={onChangeThings}
       />
-      <button onClick={onClickAddSuit}>スーツ類</button>
-      <button onClick={onClickAddFuton}>布団類</button>
-      <button onClick={onClickAddEtc}>その他</button>
+      <button disabled={disabledSuit} onClick={onClickAddSuit}>
+        スーツ類
+      </button>
+      <button disabled={disabledFuton} onClick={onClickAddFuton}>
+        布団類
+      </button>
+      <button disabled={disabledEtc} onClick={onClickAddEtc}>
+        その他
+      </button>
     </div>
   );
 };

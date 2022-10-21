@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import { InputCleaning } from "./Components/InputCleaning";
+import { Suit } from "./Components/Suit";
+import { Futon } from "./Components/Futon";
+import { Etc } from "./Components/Etc";
+import { Finish } from "./Components/Finish";
+
 import "./styles.css";
 
 export const App = () => {
@@ -78,85 +84,29 @@ export const App = () => {
   //
   return (
     <>
-      <div className="input-area">
-        <input
-          placeholder="氏名"
-          value={cleaningThings}
-          onChange={onChangeThings}
-        />
-        <button onClick={onClickAddSuit}>スーツ類</button>
-        <button onClick={onClickAddFuton}>布団類</button>
-        <button onClick={onClickAddEtc}>その他</button>
-      </div>
-      <div className="suit-area">
-        <p className="title">スーツ類</p>
-        <ul>
-          {suit.map((suit, index) => {
-            return (
-              <div key={suit} className="list-row">
-                <li>{suit}</li>
-                <button onClick={() => onClickCompleteSuit(index)}>
-                  クリーニング済み
-                </button>
-                <button onClick={() => onClickDeleteSuit(index)}>
-                  キャンセル
-                </button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
-      <div className="futon-area">
-        <p className="title">布団類</p>
-        <ul>
-          {futon.map((futon, index) => {
-            return (
-              <div key={futon} className="list-row">
-                <li>{futon}</li>
-                <button onClick={() => onClickCompleteFuton(index)}>
-                  クリーニング済み
-                </button>
-                <button onClick={() => onClickDeleteFuton(index)}>
-                  キャンセル
-                </button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
-      <div className="else-area">
-        <p className="title">その他</p>
-        <ul>
-          {etc.map((etc, index) => {
-            return (
-              <div key={etc} className="list-row">
-                <li>{etc}</li>
-                <button onClick={() => onClickCompleteEtc(index)}>
-                  クリーニング済み
-                </button>
-                <button onClick={() => onClickDeleteEtc(index)}>
-                  キャンセル
-                </button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
-      <div className="finish-area">
-        <p className="title">受け取り待ち</p>
-        <ul>
-          {finish.map((finish, index) => {
-            return (
-              <div key={finish} className="list-row">
-                <li>{finish}</li>
-                <button onClick={() => onClickDeleteFinish(index)}>
-                  受け取り完了
-                </button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
+      <InputCleaning
+        cleaningThings={cleaningThings}
+        onChangeThings={onChangeThings}
+        onClickAddSuit={onClickAddSuit}
+        onClickAddFuton={onClickAddFuton}
+        onClickAddEtc={onClickAddEtc}
+      />
+      <Suit
+        cleaningSuit={suit}
+        deleteSuit={onClickDeleteSuit}
+        CompleteSuit={onClickCompleteSuit}
+      />
+      <Futon
+        cleaningFuton={futon}
+        deleteFuton={onClickDeleteFuton}
+        CompleteFuton={onClickCompleteFuton}
+      />
+      <Etc
+        cleaningEtc={etc}
+        deleteEtc={onClickDeleteEtc}
+        CompleteEtc={onClickCompleteEtc}
+      />
+      <Finish finishCleaning={finish} deleteFinish={onClickDeleteFinish} />
     </>
   );
 };
